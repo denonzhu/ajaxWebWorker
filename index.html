@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>worker</title>
+
+</head>
+<body>
+<button id="send">发送</button>
+<output id="list"></output>
+<output id="result"></output>
+<script src="js/zepto.js"></script>
+<script src="js/core.js"></script>
+<script>
+    $('#send').on('click', function () {
+        for (var i = 0; i < 100; i++) {
+            Core.Server.get('test.json', {"name": "123", "number": "238347487"}, function (data) {
+                var result = JSON.stringify(data);
+                $('#result').append(result + "<br/>");
+            }, function (data) {
+                console.log(data);
+            });
+        }
+    });
+</script>
+</body>
+</html>
